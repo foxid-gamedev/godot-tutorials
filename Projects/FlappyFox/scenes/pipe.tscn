@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://cokpldchhrgrs"]
+
+[ext_resource type="Script" uid="uid://b6bnmbxlfj3xj" path="res://scripts/pipe.gd" id="1_arpqm"]
+[ext_resource type="Texture2D" uid="uid://c4yvtm0cnv18p" path="res://assets/pipes.png" id="2_8p0di"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(128, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(100, 290)
+
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_arpqm")
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+position = Vector2(0, 141)
+
+[node name="Sprite" type="Sprite2D" parent="Bottom"]
+position = Vector2(-128, 0)
+texture = ExtResource("2_8p0di")
+centered = false
+region_enabled = true
+region_rect = Rect2(256, 0, 256, 512)
+
+[node name="Sprite2" type="Sprite2D" parent="Bottom"]
+position = Vector2(-128, 512)
+texture = ExtResource("2_8p0di")
+centered = false
+region_enabled = true
+region_rect = Rect2(256, 256, 256, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(0, 512)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="Top" type="StaticBody2D" parent="."]
+position = Vector2(0, -150)
+
+[node name="Sprite" type="Sprite2D" parent="Top"]
+position = Vector2(-128, -512)
+texture = ExtResource("2_8p0di")
+centered = false
+flip_v = true
+region_enabled = true
+region_rect = Rect2(256, 0, 256, 512)
+
+[node name="Sprite2" type="Sprite2D" parent="Top"]
+position = Vector2(-128, -1024)
+texture = ExtResource("2_8p0di")
+centered = false
+region_enabled = true
+region_rect = Rect2(256, 256, 256, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(0, -512)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="ScoreZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[connection signal="body_entered" from="ScoreZone" to="." method="_on_score_zone_body_entered"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://biggigvsfkb2x"]
+
+[ext_resource type="Script" uid="uid://dametgiylve2m" path="res://scripts/pipe_spawner.gd" id="1_vfdvo"]
+[ext_resource type="PackedScene" uid="uid://cokpldchhrgrs" path="res://scenes/pipe.tscn" id="2_4jbh1"]
+
+[node name="PipeSpawner" type="Node2D"]
+script = ExtResource("1_vfdvo")
+PipeScene = ExtResource("2_4jbh1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
