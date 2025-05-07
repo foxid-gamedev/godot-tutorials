@@ -22,3 +22,4 @@ func _on_player_died() -> void:
 func _on_player_scored() -> void:
 	score += 1
 	ui.update_score(score)
+	$SoundScore.play()

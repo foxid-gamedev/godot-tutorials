@@ -19,10 +19,12 @@ func _physics_process(delta: float) -> void:
 	if alive:
 		if Input.is_action_just_pressed(&"jump"):
 			velocity.y = JUMP_FORCE
+			$SoundFlap.play()
 			apply_jump_rotation()
 		
 		if is_on_wall():
 			alive = false
+			$SoundDie.play()
 			died.emit()
 	
 	move_and_slide()

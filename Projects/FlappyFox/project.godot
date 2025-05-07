@@ -24,6 +24,8 @@ window/stretch/aspect="keep_height"
 
 folder_colors={
 "res://assets/": "yellow",
+"res://assets/sounds/": "green",
+"res://assets/textures/": "red",
 "res://scenes/": "orange",
 "res://scripts/": "blue"
 }

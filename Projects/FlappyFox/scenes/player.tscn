@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://baqwnsu4b81oq"]
+[gd_scene load_steps=8 format=3 uid="uid://baqwnsu4b81oq"]
 
 [ext_resource type="Script" uid="uid://cboo8isghxdf4" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://b0jrk1yqkaglh" path="res://assets/bird.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://b0jrk1yqkaglh" path="res://assets/textures/bird.png" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://c4mqjalva7ao2" path="res://assets/sounds/bird_flap.wav" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://cld8mayphh0ox" path="res://assets/sounds/bird_hit.wav" id="4_dqkch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ig7tw"]
 radius = 44.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dqkch"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("3_qhqgy")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qlg0r"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("4_dqkch")
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -17,3 +29,9 @@ texture = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ig7tw")
+
+[node name="SoundFlap" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_dqkch")
+
+[node name="SoundDie" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_qlg0r")

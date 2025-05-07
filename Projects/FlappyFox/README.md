@@ -2,7 +2,7 @@
 
 FlappyFox is a simple Flappy Bird clone to get started with Godot 4.
 
-![](/Projects/FlappyFox/assets/screenshot_game.png)
+![](/Projects/FlappyFox/assets/textures/screenshot_game.png)
 
 In this Godot tutorial for beginners, you’ll learn how to make a Flappy Bird clone.
 We’ll cover all the basics you need to start building your own game in this powerful game engine. 

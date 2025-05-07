@@ -1,11 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs7b2ikqj2nms"]
+[gd_scene load_steps=12 format=3 uid="uid://cs7b2ikqj2nms"]
 
 [ext_resource type="Script" uid="uid://dgk1vupdwmm31" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://biggigvsfkb2x" path="res://scenes/pipe_spawner.tscn" id="2_jyhfs"]
 [ext_resource type="Script" uid="uid://dqmpwp1cgqn4m" path="res://scripts/ui.gd" id="4_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://baqwnsu4b81oq" path="res://scenes/player.tscn" id="4_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://nqfeob7tddti" path="res://assets/sounds/score_01.wav" id="5_tipki"]
+[ext_resource type="AudioStream" uid="uid://cojmmbhr6vxeh" path="res://assets/sounds/score_02.wav" id="6_85g3d"]
+[ext_resource type="AudioStream" uid="uid://b7vlko15v83lf" path="res://assets/sounds/score_03.wav" id="7_choun"]
+[ext_resource type="AudioStream" uid="uid://k0qcfgakt6ac" path="res://assets/sounds/score_04.wav" id="8_ya4ey"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1bvp3"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tipki"]
+normal = Vector2(0, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_eb6dy"]
+playback_mode = 2
+streams_count = 4
+stream_0/stream = ExtResource("5_tipki")
+stream_1/stream = ExtResource("6_85g3d")
+stream_2/stream = ExtResource("7_choun")
+stream_3/stream = ExtResource("8_ya4ey")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jyhfs")
@@ -107,3 +122,12 @@ position = Vector2(0, 776)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDeadzone"]
 shape = SubResource("WorldBoundaryShape2D_1bvp3")
+
+[node name="RoofDeadzone" type="StaticBody2D" parent="."]
+position = Vector2(0, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoofDeadzone"]
+shape = SubResource("WorldBoundaryShape2D_tipki")
+
+[node name="SoundScore" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_eb6dy")
