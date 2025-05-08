@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 const GRAVITY = 1100
 const JUMP_FORCE = -500
 const ROTATION_FORCE = 30
-const ROTATION_MAX = -180
+const ROTATION_MAX = -120
 const ROTATION_DEFAULT = 10
 
 signal died
